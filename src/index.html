@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="数院桥牌爱好者联盟的入门课件、线下牌谱和实战复盘。">
+<title>Mathematical Bridge · 数院桥牌爱好者联盟</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#home" class="brand"><span class="brand-mark" aria-hidden="true">♠</span><span><b>Mathematical Bridge</b><small>数院桥牌爱好者联盟</small></span></a>
+    <nav aria-label="网站栏目"><a href="#learn">学习资料</a><a href="#boards">训练牌库</a><a href="#stories">实战复盘</a><a href="#gallery">活动影像</a></nav>
+  </div>
+</header>
+<main id="home" class="wrap">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span> 数院桥牌爱好者联盟</p>
+      <h1 id="hero-title">Mathematical Bridge</h1>
+      <p class="hero-sub">接下来到场的是</p>
+      <p class="hero-desc subjects"><span>概率论</span><span>对策论</span><span>运筹学</span><span>数理统计</span><span>随机过程</span><span>信号与系统</span><span>最优化方法</span><span>计量心理学</span></p>
+    </div>
+    <figure class="hero-media" id="hero-media"></figure>
+  </section>
+  <section id="learn" class="section">
+    <div class="section-head"><div><p class="section-index">01 / 学习资料</p><h2>桥牌修炼手册</h2></div></div>
+    <div class="resources" id="resources"></div>
+  </section>
+  <section id="boards" class="section">
+    <div class="section-head"><div><p class="section-index">02 / 训练牌库</p><h2>祝好，在数不尽的牌局间</h2></div></div>
+    <div id="board-library"></div>
+  </section>
+  <section id="stories" class="section">
+    <div class="section-head"><div><p class="section-index">03 / 实战复盘</p><h2>理性精神永生</h2></div></div>
+    <div id="story-list"></div>
+  </section>
+  <section id="gallery" class="section">
+    <div class="section-head"><div><p class="section-index">04 / 活动影像</p><h2>数学人，数学魂，同是牌桌久留人</h2></div></div>
+    <div class="gallery-carousel" id="photo-list"></div>
+  </section>
+</main>
+<main id="detail-page" class="wrap detail-page" hidden></main>
+<footer class="site-footer"><div class="wrap"><span><b>♠ Mathematical Bridge</b> <span class="footer-sub">数院桥牌爱好者联盟</span></span><button type="button" class="button quiet" id="manage-open" hidden>内容管理</button></div></footer>
+<dialog id="manager" aria-labelledby="manager-title">
+  <div class="manage-head"><div><p class="section-index">本机编辑</p><h2 id="manager-title">内容管理</h2></div><button id="manage-close" class="button quiet" type="button">返回网页</button></div>
+  <details class="guide" open><summary>更新与发布</summary><ol>
+    <li>新增或编辑条目后，点击「保存条目」，内容会保存到当前项目文件夹。</li>
+    <li>用 GitHub Desktop 提交你的工作分支，再创建 PR。合并到 main 后，由 GitHub Actions 生成并发布网页。</li>
+    <li>「生成发布包」可用于本机检查，「下载维护备份」可保存离线副本。协作请先同步仓库最新版。</li>
+  </ol></details>
+  <form id="editor">
+    <div class="fields">
+      <label>栏目<select name="type" id="edit-type"><option value="lesson">课程讲义</option><option value="system">体系与约定</option><option value="tool">常用工具</option><option value="session">训练牌例</option><option value="story">实战复盘</option><option value="photo">活动照片</option></select></label>
+      <label id="title-field">标题<input name="title" maxlength="100" required placeholder="例如：11 月 2 日线下训练"></label>
+      <label>日期（可选）<input type="date" name="date"></label>
+      <label id="resource-mode-field">内容形式<select name="resourceMode"><option value="file">上传文件</option><option value="link">网页链接</option></select></label>
+      <label id="resource-url-field" class="span" hidden>网页地址<input type="url" name="href" placeholder="https://"></label>
+      <label id="file-field">本地文件<input type="file" name="file"><small id="file-tip"></small></label>
+      <label id="category-field" hidden>类型<select name="category"><option value="叫牌">百家争鸣 · 叫牌</option><option value="坐庄">专家打法 · 坐庄</option><option value="防守">防守杀招 · 防守</option></select></label>
+      <label id="story-session-field" hidden>关联活动（可选）<select name="session"></select></label>
+      <label id="story-board-field" hidden>关联牌号<select name="board"></select></label>
+      <label id="story-auction-field" class="span" hidden>叫牌序列（可选，按发牌人起依次填写）<textarea name="auction" rows="2" placeholder="例如：1H Pass 1S Pass 1NT Pass 2D Pass 3NT Pass Pass Pass"></textarea></label>
+      <div id="story-custom-field" class="span" hidden>
+        <div class="fields">
+          <label class="span">牌桌上方引导语<input name="lead" maxlength="200" placeholder="例如：只数到5个赢墩的3NT，是否还有一线生机？"></label>
+          <label>叫牌面板标题<input name="auctionTitle" maxlength="100" placeholder="叫牌进程"></label>
+          <label>署名方位<select name="contributorSeat"><option value="S">南家</option><option value="N">北家</option><option value="E">东家</option><option value="W">西家</option></select></label>
+          <label>单手视角<select name="viewSeat"><option value="">跟随署名方位</option><option value="N">北家</option><option value="E">东家</option><option value="S">南家</option><option value="W">西家</option></select></label>
+          <label class="span">本局署名<input name="contributor" maxlength="100" placeholder="例如：桔子"></label>
+          <label class="span">叫品提示（可选，每行一条）<textarea name="auctionNotes" rows="2" placeholder="7 | 逼局"></textarea><small>从第一个叫品起计数，Pass 也计入。左侧填序号，右侧填解释。</small></label>
+        </div>
+        <div id="section-editors"></div>
+        <button type="button" id="add-story-section" class="button quiet">＋ 添加内容段落</button>
+        <details class="endgame-editor"><summary>残局牌图（可选）</summary><p class="small muted">每家按黑桃 / 红心 / 方块 / 草花填写余牌，空门填 —，10 用 T 表示。在正文中填写 [[残局]] 放置牌图。已出牌自动从原牌面中淡化显示。</p>
+          <div class="fields">
+            <label>北家余牌<input name="remainingN" placeholder="Q / — / AQ9 / A"></label>
+            <label>东家余牌<input name="remainingE" placeholder="T / — / KJ83 / —"></label>
+            <label>南家余牌<input name="remainingS" placeholder="— / 5 / T75 / J"></label>
+            <label>西家余牌<input name="remainingW" placeholder="— / — / 64 / KQT"></label>
+            <label>当前出牌方<select name="highlightSeat"><option>N</option><option>E</option><option>S</option><option>W</option></select></label>
+            <label>当前出牌<input name="highlightCard" placeholder="SQ（北家出黑桃Q）"></label>
+          </div>
+        </details>
+      </div>
+<label class="span"><span id="description-label">简介（可选）</span><textarea name="description" rows="3" maxlength="12000"></textarea></label>
+    </div>
+    <div class="actions"><button class="button solid" type="submit">保存条目</button><button class="button quiet" id="edit-reset" type="button">新建条目</button></div>
+  </form>
+  <p id="manage-status" role="status" aria-live="polite"></p>
+  <div id="manage-list"></div>
+  <div class="export-bar actions"><button class="button solid" id="export-editable" type="button">下载维护备份</button><button class="button quiet" id="export-reader" type="button">生成发布包</button></div>
+</dialog>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

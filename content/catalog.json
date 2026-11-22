@@ -1,0 +1,738 @@
+{
+  "revision": 22,
+  "entries": [
+    {
+      "title": "桥牌入门",
+      "date": "",
+      "description": "",
+      "id": "intro",
+      "type": "lesson",
+      "file": {
+        "name": "桥牌入门_数院桥牌爱好者联盟.pptx",
+        "path": "media/lesson/intro-969e291f27245c43.pptx",
+        "size": 2801053
+      }
+    },
+    {
+      "title": "叫牌入门",
+      "date": "",
+      "description": "",
+      "id": "lesson-0",
+      "type": "lesson",
+      "file": {
+        "name": "叫牌入门_数院桥牌爱好者联盟.pptx",
+        "path": "media/lesson/lesson-0-71220d9a87058c9d.pptx",
+        "size": 3260046
+      }
+    },
+    {
+      "title": "坐庄入门",
+      "date": "",
+      "description": "",
+      "id": "lesson-1",
+      "type": "lesson",
+      "file": {
+        "name": "坐庄入门_数院桥牌爱好者联盟.pptx",
+        "path": "media/lesson/lesson-1-48d7f68aca7b4241.pptx",
+        "size": 3575789
+      }
+    },
+    {
+      "title": "自然体系约定卡",
+      "date": "",
+      "description": "",
+      "id": "card",
+      "type": "system",
+      "file": {
+        "name": "桥牌约定卡.doc",
+        "path": "media/system/card-c1201ef4aa92.doc",
+        "size": 162304
+      }
+    },
+    {
+      "title": "11月2日线下训练",
+      "date": "2026-11-02",
+      "description": "",
+      "id": "nov2",
+      "type": "session",
+      "file": {
+        "name": "11.2.pbn",
+        "path": "media/session/nov2-e89fe09699bf.pbn",
+        "size": 9408
+      }
+    },
+    {
+      "title": "活动照片01",
+      "date": "",
+      "description": "",
+      "id": "photo-0",
+      "type": "photo",
+      "file": {
+        "name": "活动照片01.jpg",
+        "path": "media/photo/photo-0-8f313a906f82.jpg",
+        "size": 131206,
+        "thumbnail": "media/photo/photo-0-8f313a906f82-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片02",
+      "date": "",
+      "description": "",
+      "id": "photo-1",
+      "type": "photo",
+      "file": {
+        "name": "活动照片02.jpg",
+        "path": "media/photo/photo-1-3b81d35949bc.jpg",
+        "size": 104213,
+        "thumbnail": "media/photo/photo-1-3b81d35949bc-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片03",
+      "date": "",
+      "description": "",
+      "id": "photo-2",
+      "type": "photo",
+      "file": {
+        "name": "活动照片03.jpg",
+        "path": "media/photo/photo-2-832311e7c141.jpg",
+        "size": 134861,
+        "thumbnail": "media/photo/photo-2-832311e7c141-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片04",
+      "date": "",
+      "description": "",
+      "id": "photo-3",
+      "type": "photo",
+      "file": {
+        "name": "活动照片04.jpg",
+        "path": "media/photo/photo-3-a687f87d5094.jpg",
+        "size": 92145,
+        "thumbnail": "media/photo/photo-3-a687f87d5094-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片05",
+      "date": "",
+      "description": "",
+      "id": "photo-4",
+      "type": "photo",
+      "file": {
+        "name": "活动照片05.jpg",
+        "path": "media/photo/photo-4-4db27ead7a1a.jpg",
+        "size": 84622,
+        "thumbnail": "media/photo/photo-4-4db27ead7a1a-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片06",
+      "date": "",
+      "description": "",
+      "id": "photo-5",
+      "type": "photo",
+      "file": {
+        "name": "活动照片06.jpg",
+        "path": "media/photo/photo-5-f83fa790a911.jpg",
+        "size": 82807,
+        "thumbnail": "media/photo/photo-5-f83fa790a911-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片07",
+      "date": "",
+      "description": "",
+      "id": "photo-6",
+      "type": "photo",
+      "file": {
+        "name": "活动照片07.jpg",
+        "path": "media/photo/photo-6-3c7e7b023683.jpg",
+        "size": 137957,
+        "thumbnail": "media/photo/photo-6-3c7e7b023683-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片08",
+      "date": "",
+      "description": "",
+      "id": "photo-7",
+      "type": "photo",
+      "file": {
+        "name": "活动照片08.jpg",
+        "path": "media/photo/photo-7-ff17104e622f.jpg",
+        "size": 153299,
+        "thumbnail": "media/photo/photo-7-ff17104e622f-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片09",
+      "date": "",
+      "description": "",
+      "id": "photo-8",
+      "type": "photo",
+      "file": {
+        "name": "活动照片09.jpg",
+        "path": "media/photo/photo-8-8b6f2ceba507.jpg",
+        "size": 127767,
+        "thumbnail": "media/photo/photo-8-8b6f2ceba507-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片10",
+      "date": "",
+      "description": "",
+      "id": "photo-9",
+      "type": "photo",
+      "file": {
+        "name": "活动照片10.jpg",
+        "path": "media/photo/photo-9-a1bf0cf092e6.jpg",
+        "size": 132333,
+        "thumbnail": "media/photo/photo-9-a1bf0cf092e6-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片11",
+      "date": "",
+      "description": "",
+      "id": "photo-10",
+      "type": "photo",
+      "file": {
+        "name": "活动照片11.jpg",
+        "path": "media/photo/photo-10-17f398a4b194.jpg",
+        "size": 105227,
+        "thumbnail": "media/photo/photo-10-17f398a4b194-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片12",
+      "date": "",
+      "description": "",
+      "id": "photo-11",
+      "type": "photo",
+      "file": {
+        "name": "活动照片12.jpg",
+        "path": "media/photo/photo-11-85edfab434d8.jpg",
+        "size": 120137,
+        "thumbnail": "media/photo/photo-11-85edfab434d8-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片13",
+      "date": "",
+      "description": "",
+      "id": "photo-12",
+      "type": "photo",
+      "file": {
+        "name": "活动照片13.jpg",
+        "path": "media/photo/photo-12-93e544c0257d.jpg",
+        "size": 78366,
+        "thumbnail": "media/photo/photo-12-93e544c0257d-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片14",
+      "date": "",
+      "description": "",
+      "id": "photo-13",
+      "type": "photo",
+      "file": {
+        "name": "活动照片14.jpg",
+        "path": "media/photo/photo-13-afa1b96d779d.jpg",
+        "size": 84339,
+        "thumbnail": "media/photo/photo-13-afa1b96d779d-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片15",
+      "date": "",
+      "description": "",
+      "id": "photo-14",
+      "type": "photo",
+      "file": {
+        "name": "活动照片15.jpg",
+        "path": "media/photo/photo-14-72f1b284bf05.jpg",
+        "size": 86047,
+        "thumbnail": "media/photo/photo-14-72f1b284bf05-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片16",
+      "date": "",
+      "description": "",
+      "id": "photo-15",
+      "type": "photo",
+      "file": {
+        "name": "活动照片16.jpg",
+        "path": "media/photo/photo-15-cfcd392b46a1.jpg",
+        "size": 86781,
+        "thumbnail": "media/photo/photo-15-cfcd392b46a1-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片17",
+      "date": "",
+      "description": "",
+      "id": "photo-16",
+      "type": "photo",
+      "file": {
+        "name": "活动照片17.jpg",
+        "path": "media/photo/photo-16-05948cc44ca0.jpg",
+        "size": 154563,
+        "thumbnail": "media/photo/photo-16-05948cc44ca0-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片18",
+      "date": "",
+      "description": "",
+      "id": "photo-17",
+      "type": "photo",
+      "file": {
+        "name": "活动照片18.jpg",
+        "path": "media/photo/photo-17-08c73168b442.jpg",
+        "size": 161380,
+        "thumbnail": "media/photo/photo-17-08c73168b442-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片19",
+      "date": "",
+      "description": "",
+      "id": "photo-18",
+      "type": "photo",
+      "file": {
+        "name": "活动照片19.jpg",
+        "path": "media/photo/photo-18-34589a189b69.jpg",
+        "size": 257226,
+        "thumbnail": "media/photo/photo-18-34589a189b69-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片20",
+      "date": "",
+      "description": "",
+      "id": "photo-19",
+      "type": "photo",
+      "file": {
+        "name": "活动照片20.jpg",
+        "path": "media/photo/photo-19-b2aa031a954f.jpg",
+        "size": 207209,
+        "thumbnail": "media/photo/photo-19-b2aa031a954f-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片21",
+      "date": "",
+      "description": "",
+      "id": "photo-20",
+      "type": "photo",
+      "file": {
+        "name": "活动照片21.jpg",
+        "path": "media/photo/photo-20-99d2010e8f4e.jpg",
+        "size": 183587,
+        "thumbnail": "media/photo/photo-20-99d2010e8f4e-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片22",
+      "date": "",
+      "description": "",
+      "id": "photo-21",
+      "type": "photo",
+      "file": {
+        "name": "活动照片22.jpg",
+        "path": "media/photo/photo-21-eb53e8043304.jpg",
+        "size": 275914,
+        "thumbnail": "media/photo/photo-21-eb53e8043304-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片23",
+      "date": "",
+      "description": "",
+      "id": "photo-22",
+      "type": "photo",
+      "file": {
+        "name": "活动照片23.jpg",
+        "path": "media/photo/photo-22-90ddc2354545.jpg",
+        "size": 253176,
+        "thumbnail": "media/photo/photo-22-90ddc2354545-thumb.jpg"
+      }
+    },
+    {
+      "title": "活动照片24",
+      "date": "",
+      "description": "",
+      "id": "photo-23",
+      "type": "photo",
+      "file": {
+        "name": "活动照片24.jpg",
+        "path": "media/photo/photo-23-82581b1e5fda.jpg",
+        "size": 272104,
+        "thumbnail": "media/photo/photo-23-82581b1e5fda-thumb.jpg"
+      }
+    },
+    {
+      "title": "BM2000 坐庄练习",
+      "date": "",
+      "description": "",
+      "id": "bm2000",
+      "type": "tool",
+      "file": {
+        "name": "BM2000.zip",
+        "path": "media/tool/bm2000-b69162a0eeaa.zip",
+        "size": 2281789
+      }
+    },
+    {
+      "title": "BridgeComposer",
+      "date": "",
+      "description": "",
+      "id": "bridgecomposer",
+      "type": "tool",
+      "href": "https://bridgecomposer.com/",
+      "linkLabel": "官网",
+      "library": false
+    },
+    {
+      "title": "Bridge Solver Online",
+      "date": "",
+      "description": "",
+      "id": "bsol",
+      "type": "tool",
+      "href": "https://dds.bridgewebs.com/bsol_standalone/ddummy.htm",
+      "linkLabel": "网页版",
+      "library": false
+    },
+    {
+      "title": "桥牌约定叫资料库",
+      "date": "",
+      "description": "",
+      "id": "yuque-bridge",
+      "type": "system",
+      "href": "https://www.yuque.com/yuqueyonghugivnwz/nt2nh4",
+      "linkLabel": "目录",
+      "library": true
+    },
+    {
+      "title": "相信感觉",
+      "date": "2026-11-02",
+      "description": "11.2 · 第 16 副 · 闭室",
+      "id": "trust-feeling",
+      "type": "story",
+      "session": "nov2",
+      "board": "16",
+      "process": "",
+      "thinking": "东家由于不熟悉叫品选择直接询问关键张，而南家持 6610 牌型果断干扰。由于同伴不懂 DEPO 约定，思考良久后西家大胆跳到 7 阶。最终南家仗着局况有利，果断用 7♠ 牺牲。",
+      "result": "闭室南家主打 7♠X−5，南北 −1100；开室南家没有进行干扰，东西成功叫到 7♦ 并做成，东西 +2140。最终，闭室的南家凭借坚定的信念与勇气，为队伍赢得了 14 IMP。",
+      "lead": "持4点牌的你，如何亮剑？",
+      "attribution": "本局南家为张小宇。",
+      "category": "叫牌",
+      "contributor": "张小宇",
+      "contributorSeat": "S",
+      "auctionTitle": "闭室叫牌",
+      "sections": [
+        {
+          "title": "身在局中",
+          "body": "东家由于不熟悉叫品选择直接询问关键张，而南家持 6610 牌型果断干扰。由于同伴不懂 DEPO 约定，思考良久后西家大胆跳到 7 阶。最终南家仗着局况有利，果断用 7♠ 牺牲。"
+        },
+        {
+          "title": "实战结果",
+          "body": "闭室南家主打 7♠X−5，南北 −1100；开室南家没有进行干扰，东西成功叫到 7♦ 并做成，东西 +2140。最终，闭室的南家凭借坚定的信念与勇气，为队伍赢得了 14 IMP。"
+        }
+      ],
+      "auctionNotes": {
+        "3": "罗马关键张问叫"
+      },
+      "auction": [
+        "1D",
+        "Pass",
+        "4NT",
+        "5S",
+        "7D",
+        "Pass",
+        "Pass",
+        "7S",
+        "X",
+        "Pass",
+        "Pass",
+        "Pass"
+      ]
+    },
+    {
+      "title": "11月16日线下训练",
+      "date": "2026-11-16",
+      "description": "",
+      "id": "03236713-569b-4f21-91f3-8fbb66e371f7",
+      "type": "session",
+      "file": {
+        "name": "11.16.pbn",
+        "path": "media/session/03236713-569b-4f21-91f3-8fbb66e371f7-6f54c4eb91510255.pbn",
+        "size": 10642
+      }
+    },
+    {
+      "title": "避实就虚",
+      "date": "2026-11-16",
+      "description": "11.16 · 第 7 副 · 南家主打 3NT",
+      "id": "159e8d97-4c0a-412d-8a84-dc031710c2b5",
+      "type": "story",
+      "session": "03236713-569b-4f21-91f3-8fbb66e371f7",
+      "board": "7",
+      "process": "",
+      "thinking": "",
+      "result": "",
+      "lead": "只数到5个赢墩的3NT，是否还有一线生机？",
+      "attribution": "",
+      "category": "坐庄",
+      "contributor": "沈戚榆",
+      "contributorSeat": "S",
+      "auctionTitle": "叫牌进程",
+      "sections": [
+        {
+          "title": "身在局中",
+          "body": "西家首攻C8，北家放小，庄家C9吃进。注意到西家的C8大概率出自长四，而要想制造额外的赢墩，只能期望于高花。于是庄家连续兑现HA、K，再打H3脱手给东家，西家和明手各垫去一张草花。东家回攻S5，庄家SA吃进。由于东家没有回攻草花，庄家推测东家应该是单张草花，于是可以在其它花色上投入东家。接着庄家用H4脱手给东家，西家垫去D2明手扔掉C6。东家拔SK后打S8被明手赢进。明手打出最后一张SQ，然后出D9再次脱手给东家。\n[[残局]]\n此时东家无论打什么都无力回天。庄家拿到最后3墩完成3NT定约。"
+        },
+        {
+          "title": "失之交臂",
+          "body": "西家的首攻C8送成这个不可能的3NT。事实上，只要西家不首攻CT/C8/C3让庄家用C9/CJ吃进，庄家都无法取得9个赢墩，然而这是照本宣科的长四首攻所无法避免的惨案。"
+        }
+      ],
+      "auctionNotes": {
+        "7": "逼局"
+      },
+      "endgame": {
+        "remaining": {
+          "N": [
+            "",
+            "",
+            "AQ9",
+            "A"
+          ],
+          "E": [
+            "",
+            "",
+            "KJ83",
+            ""
+          ],
+          "S": [
+            "",
+            "5",
+            "T7",
+            "J"
+          ],
+          "W": [
+            "",
+            "",
+            "6",
+            "KQT"
+          ]
+        },
+        "seat": "N",
+        "card": "D9"
+      },
+      "auction": [
+        "1H",
+        "Pass",
+        "1S",
+        "Pass",
+        "1NT",
+        "Pass",
+        "2D",
+        "Pass",
+        "3NT",
+        "Pass",
+        "Pass",
+        "Pass"
+      ]
+    },
+    {
+      "title": "活动照片25",
+      "date": "2026-11-16",
+      "description": "",
+      "id": "photo-20261116-184342",
+      "type": "photo",
+      "file": {
+        "name": "IMG_20261116_184342.jpg",
+        "path": "media/photo/photo-20261116-184342-0cfc4de6cde55b43.jpg",
+        "size": 280396,
+        "thumbnail": "media/photo/photo-20261116-184342-75b60aeda104b431-thumb.jpg"
+      }
+    },
+    {
+      "title": "第二届“祖冲之-雅可比杯”棋牌赛",
+      "date": "2026-11-21",
+      "description": "",
+      "id": "849c136f-5514-4bae-ae00-d25fdef32690",
+      "type": "session",
+      "file": {
+        "name": "第二届棋牌赛.pbn",
+        "path": "media/session/849c136f-5514-4bae-ae00-d25fdef32690-b9da7e9a72c6a985.pbn",
+        "size": 10664
+      }
+    },
+    {
+      "title": "抽丝剥茧",
+      "date": "2026-11-21",
+      "description": "",
+      "id": "c04a243e-0a6b-4ef6-b963-071ac17cbbfa",
+      "type": "story",
+      "session": "849c136f-5514-4bae-ae00-d25fdef32690",
+      "board": "10",
+      "process": "",
+      "thinking": "",
+      "result": "",
+      "lead": "比赛过半落后 19 IMP的你，必须挺身而出",
+      "attribution": "",
+      "category": "坐庄",
+      "contributor": "屈竣堃",
+      "contributorSeat": "W",
+      "auctionTitle": "叫牌进程",
+      "sections": [
+        {
+          "title": "身在局中",
+          "body": "北家首攻C10，作为庄家，如果方块或梅花有一个是33分布，那么6H唾手可得。然而，这里你并没有试错的权利——如果两门花色均不是33分布，直接砸3轮任意低花的结果都是定约溃败。有没有更安全的打法呢？\n\n庄家注意到了北家一定拿着黑桃长套进行争叫，那么如果双低花集中在南家手中，就有机会对其进行挤牌。于是，庄家第一轮用CA吃进，然后请将回到庄家手中，发现外面红桃是33分布，明手垫去一张黑桃。此时，庄家可以大胆地进行挤牌了——先送一墩黑桃到北家SA，然后北家回SQ时将吃，然后打出最后一张将牌。\n\n此时的残局如下：\n[[残局]]\n南家无论垫哪门花色，西家都可以在这一门低花上拿到第12个赢墩。"
+        },
+        {
+          "title": "实战结果",
+          "body": "开室西家主打6H=，闭室西家可能受到北家加倍的影响，错估了外面的牌张分布，导致定约宕一。最终，客队凭借此副牌追回了 17 IMP。"
+        }
+      ],
+      "auctionNotes": {},
+      "endgame": {
+        "remaining": {
+          "N": [
+            "JT82",
+            "",
+            "63",
+            "8"
+          ],
+          "E": [
+            "9",
+            "",
+            "854",
+            "Q97"
+          ],
+          "S": [
+            "",
+            "",
+            "JT97",
+            "J54"
+          ],
+          "W": [
+            "",
+            "J",
+            "AKQ2",
+            "K2"
+          ]
+        },
+        "seat": "W",
+        "card": "HJ"
+      },
+      "auction": [
+        "Pass",
+        "Pass",
+        "2C",
+        "2S",
+        "X",
+        "Pass",
+        "3H",
+        "Pass",
+        "4H",
+        "Pass",
+        "4NT",
+        "Pass",
+        "5C",
+        "Pass",
+        "6H",
+        "Pass",
+        "Pass",
+        "Pass"
+      ],
+      "viewSeat": "W"
+    },
+    {
+      "title": "上兵伐谋",
+      "date": "2026-11-21",
+      "description": "",
+      "id": "8da72ad6-eef2-433b-a866-6fcd73012e45",
+      "type": "story",
+      "session": "849c136f-5514-4bae-ae00-d25fdef32690",
+      "board": "3",
+      "process": "",
+      "thinking": "",
+      "result": "",
+      "lead": "我赌你的枪里没有子弹",
+      "attribution": "",
+      "category": "叫牌",
+      "contributor": "张小宇",
+      "contributorSeat": "S",
+      "auctionTitle": "叫牌进程",
+      "sections": [
+        {
+          "title": "身在局中",
+          "body": "持16点非均型牌，开叫1D；在对方争叫黑桃、同伴显示出方块配合后，凭借手中8个赢墩直接封局3NT，精准而犀利。"
+        },
+        {
+          "title": "实战结果",
+          "body": "西家首攻黑桃长四，让庄家有充足的时间拿到9个赢墩。而另一桌南家叫到5D-2，为队伍赚取了 11 IMP。"
+        },
+        {
+          "title": "失之交臂",
+          "body": "双明手可见，如果首攻方块或者梅花，3NT定约将无法完成。但在同伴已显示出黑桃配合下，有什么会让你做出那样的决定呢？此外，东西实际上有着显而易见的4S定约，但在对方拍下3NT之后，你还有勇气往上叫吗？"
+        }
+      ],
+      "auctionNotes": {},
+      "auction": [
+        "1D",
+        "1S",
+        "2D",
+        "3S",
+        "3NT",
+        "Pass",
+        "Pass",
+        "Pass"
+      ]
+    },
+    {
+      "title": "",
+      "date": "2026-11-21",
+      "description": "",
+      "id": "photo-20261121-1795264300789",
+      "type": "photo",
+      "file": {
+        "name": "mmexport1795264300789.jpg",
+        "path": "media/photo/photo-20261121-1795264300789-3d95c3db5fe992e2.jpg",
+        "size": 274256,
+        "thumbnail": "media/photo/photo-20261121-1795264300789-cfb97a5f6b475ab0-thumb.jpg"
+      }
+    },
+    {
+      "title": "",
+      "date": "2026-11-21",
+      "description": "",
+      "id": "photo-20261121-1795264303360",
+      "type": "photo",
+      "file": {
+        "name": "mmexport1795264303360.jpg",
+        "path": "media/photo/photo-20261121-1795264303360-6f5cfd7cd95d2129.jpg",
+        "size": 219790,
+        "thumbnail": "media/photo/photo-20261121-1795264303360-688de0c20685ac6c-thumb.jpg"
+      }
+    },
+    {
+      "title": "",
+      "date": "2026-11-21",
+      "description": "",
+      "id": "photo-20261121-1795264307114",
+      "type": "photo",
+      "file": {
+        "name": "mmexport1795264307114.jpg",
+        "path": "media/photo/photo-20261121-1795264307114-191281f77bfbc4cf.jpg",
+        "size": 234570,
+        "thumbnail": "media/photo/photo-20261121-1795264307114-e3c52e3687117b3a-thumb.jpg"
+      }
+    }
+  ]
+}
