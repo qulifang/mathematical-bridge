@@ -737,7 +737,7 @@
     {
       "title": "桥牌记牌器",
       "date": "",
-      "description": "记录叫牌和赛果，自动计分，拍照识别四手牌并导出 PBN",
+      "description": "记录叫牌和赛果，拍照识别四手牌并导出 PBN，支持开闭室 IMP 和 VP",
       "id": "1a1562c2-e6a9-427e-a269-93dfc7603519",
       "type": "tool",
       "href": "https://bridge-table-notes-1122.formaldeck2.chatgpt.site/",
