@@ -18,14 +18,28 @@
 
 ## 每次更新
 
-1. 在 GitHub Desktop 同步 `main`。建工作分支，例如 `content/1122-training`。
+1. 第一次在 GitHub Desktop 克隆本仓库。以后每次先同步 `main`，再按下方约定建工作分支。
 2. 运行 `启动维护.cmd`，通过「内容管理」录入并预览。保存后在 Desktop 核对 **Changes**，将目录和实际引用的附件一起提交。
 3. 点 **Publish branch** 或 **Push origin**，创建以 `main` 为目标的 PR。说明改动、检查结果以及有无替换或删除。根据审核反馈在原分支补交更新。
 4. 负责人检查 **Files changed** 和构建结果。必要时切到成员分支本机预览，核对活动、牌号、署名及下载。审核通过后合并。
 5. 在 Actions 检查 `main` 的发布，再到正式网站验收。网络上已打开的旧页面可刷新后检查。
 
+## 分支命名
+
+工作分支统一使用 `类型/日期-说明`。日期用创建分支当天的 `YYYY-MM-DD`，月份和日补足两位。说明用简短的小写英文，可包含数字，单词之间用 `-` 分隔。每个分支对应一项改动，按主要目的选择类型。
+
+| 类型 | 用途 | 示例 |
+| --- | --- | --- |
+| `content` | 内容更新：新增或修改讲义、训练牌、复盘和照片 | `content/2026-11-22-training` |
+| `bugfix` | 问题修复：修复网站或维护工具中的问题 | `bugfix/2026-11-22-gallery-flicker` |
+| `feature` | 功能新增：添加网站功能 | `feature/2026-11-22-board-search` |
+| `docs` | 文档变更：修改说明或维护指南 | `docs/2026-11-22-branch-naming` |
+| `chore` | 杂项：整理仓库、清理旧文件或调整发布配置 | `chore/2026-11-22-cleanup-legacy-files` |
+
+`main` 用于正式发布。工作分支在创建 PR 前确定名称，因为改名会关闭以该分支为来源的未合并 PR。合并后可以删除工作分支，已合并的改动和 PR 记录会保留。
+
 ## 版本记录
 
-日常内容用 PR 和提交记录追溯。需要发版本时，先核对 Pages 部署成功的提交，再到 **Releases → Draft a new release** 创建新标签并说明具体变化。当前试用版使用 `v1.0.0-beta.1`，下一轮可用 `v1.0.0-beta.2`。正式版用 `v1.0.0`，修复版用 `v1.0.1`，新增重要功能用 `v1.1.0`，大改版用 `v2.0.0`。Beta 勾选 **This is a pre-release**。
+日常内容用 PR 和提交记录追溯。需要发版本时，先核对 Pages 部署成功的提交，再到 **Releases → Draft a new release** 创建新标签并说明具体变化。`v1.0.0-beta.1` 是首个试用版，`v1.0.0` 是首个正式版。之后的修复版可用 `v1.0.1`，新增重要功能用 `v1.1.0`，大改版用 `v2.0.0`。Beta 勾选 **This is a pre-release**。
 
 [GitHub Pages 发布来源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) · [Rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository) · [Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
