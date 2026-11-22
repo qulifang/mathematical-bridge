@@ -1,0 +1,10 @@
+/.gitattributes text eol=lf
+/.gitignore text eol=lf
+/*.md text eol=lf
+/*.cmd text eol=crlf
+/.github/** text eol=lf
+/content/*.json text eol=lf
+/docs/*.md text eol=lf
+/src/** text eol=lf
+/tools/*.py text eol=lf
+/media/** -text
