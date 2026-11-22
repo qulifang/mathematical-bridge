@@ -84,10 +84,7 @@
         <label for="camera" class="primary">拍照</label><input id="camera" type="file" accept="image/*" capture="environment">
         <label for="album" class="secondary">相册</label><input id="album" type="file" accept="image/*">
       </div>
-      <div class="photo-actions">
-        <button type="button" id="manual-deal" class="secondary">手动录牌</button>
-        <a class="secondary recognition-link" href="https://bridgelens.johnfaben.com/" rel="noopener" target="_blank">去 BridgeLens 识别</a>
-      </div>
+      <button type="button" id="manual-deal" class="secondary">手动录牌</button>
       <div id="image-area" hidden>
         <img id="image-preview" alt="本副四手牌照片">
       </div>
@@ -102,7 +99,7 @@
       </div>
       <details id="import">
         <summary>粘贴 PBN 牌面</summary>
-        <p class="muted">在 BridgeLens 识别后，把 Deal 粘贴到这里</p>
+        <p class="muted">也可用 <a href="https://bridgelens.johnfaben.com/" rel="noopener" target="_blank">BridgeLens</a> 识别后粘贴 Deal</p>
         <textarea id="deal-input" rows="3" aria-label="PBN 牌面" placeholder='[Deal "N:... ... ... ..."]'></textarea>
         <button type="button" id="import-deal" class="secondary">读取 Deal</button>
       </details>

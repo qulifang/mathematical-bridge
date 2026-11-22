@@ -36,7 +36,6 @@
   const byNumber = number => session.boards.findIndex(item => item.number === number);
   let stage = 'auction';
   let level = 1;
-  let activePhoto = null;
   let photoURL = null;
   let photoRequest = 0;
   let manualEntry = false;
@@ -236,7 +235,7 @@
     const ready = show && B.validateDeal(current.deal);
     byId('review').hidden = !show;
     const status = byId('photo-state');
-    status.textContent = current.confirmed ? '已确认' : show ? '待确认' : activePhoto ? '待录牌' : '';
+    status.textContent = current.confirmed ? '已确认' : show ? '待确认' : photoURL ? '待录牌' : '';
     status.hidden = !status.textContent;
     byId('confirm').disabled = !ready || current.confirmed;
     byId('confirm').textContent = current.confirmed ? '牌面已确认' : '确认四手牌';
@@ -420,7 +419,6 @@
 
   function setPhoto(file) {
     if (photoURL) URL.revokeObjectURL(photoURL);
-    activePhoto = file;
     photoURL = file ? URL.createObjectURL(file) : null;
     const image = byId('image-preview');
     if (photoURL) image.src = photoURL;
@@ -781,7 +779,7 @@
     if (!deal) { say('Deal 无法读取，请检查格式'); return; }
     ++photoRequest;
 
-    if (activePhoto) setPhoto(activePhoto);
+    byId('recognition-message').textContent = '';
     board().deal = deal;
     board().confirmed = false;
     board().finding = '';
