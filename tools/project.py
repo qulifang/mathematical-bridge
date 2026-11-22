@@ -12,6 +12,10 @@ from urllib.parse import urlsplit
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+RECORDER_ROUTE = "tools/bridge-table/"
+RECORDER_SOURCE = ROOT / "src/bridge-table"
+RECORDER_ASSETS = ("index.html", "style.css", "bridge.js", "match.js", "app.js",
+                   "fonts/noto-serif-sc.ttf", "fonts/OFL.txt")
 TYPES = {
     "lesson": {".ppt", ".pptx", ".pdf"},
     "system": {".doc", ".docx", ".pdf", ".md", ".txt"},
@@ -181,9 +185,10 @@ def normalize_entries(entries, upload=False):
                 record["auction"] = auction
         elif item.get("href") and kind in {"lesson", "system", "tool"}:
             href = text_field(item, "href", 2000)
-            parsed = urlsplit(href)
-            if parsed.scheme not in {"https", "http"} or not parsed.netloc or parsed.username:
-                raise ValueError("网页链接需使用 http 或 https。")
+            if not (kind == "tool" and href == RECORDER_ROUTE):
+                parsed = urlsplit(href)
+                if parsed.scheme not in {"https", "http"} or not parsed.netloc or parsed.username:
+                    raise ValueError("网页链接需使用 http 或 https。")
             record["href"] = href
             record["linkLabel"] = text_field(item, "linkLabel", 30)
             record["library"] = bool(item.get("library"))
@@ -263,6 +268,10 @@ def build():
         (staging / "data/site.json").write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         for name, destination in files.items():
             (staging / destination).write_bytes((ROOT / "src" / name).read_bytes())
+        for name in RECORDER_ASSETS:
+            target = staging / RECORDER_ROUTE / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((RECORDER_SOURCE / name).read_bytes())
         for item in data["entries"]:
             if "file" not in item:
                 continue

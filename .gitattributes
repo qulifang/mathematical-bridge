@@ -6,5 +6,6 @@
 /content/*.json text eol=lf
 /docs/*.md text eol=lf
 /src/** text eol=lf
+/src/bridge-table/fonts/*.ttf -text
 /tools/*.py text eol=lf
 /media/** -text

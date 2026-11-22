@@ -8,7 +8,8 @@ import threading
 from urllib.parse import unquote, urlsplit
 import webbrowser
 
-from project import ROOT, atomic_catalog, backup, build, normalize_entries, read_catalog, site_data
+from project import (RECORDER_ASSETS, RECORDER_ROUTE, RECORDER_SOURCE, ROOT,
+                     atomic_catalog, backup, build, normalize_entries, read_catalog, site_data)
 
 LOCK = threading.RLock()
 
@@ -47,6 +48,12 @@ class Handler(BaseHTTPRequestHandler):
             target = ROOT / "src/index.html"
         elif path in {"/assets/app.js", "/assets/style.css"}:
             target = ROOT / "src" / Path(path).name
+        elif path.startswith("/" + RECORDER_ROUTE):
+            name = path.removeprefix("/" + RECORDER_ROUTE) or "index.html"
+            if name not in RECORDER_ASSETS:
+                self.reply(404, {"error": "文件不存在。"})
+                return
+            target = RECORDER_SOURCE / name
         elif path.startswith("/media/"):
             target = (ROOT / path.lstrip("/")).resolve()
             if not target.is_relative_to((ROOT / "media").resolve()):
@@ -58,7 +65,7 @@ class Handler(BaseHTTPRequestHandler):
         if not target.is_file():
             self.reply(404, {"error": "文件不存在。"})
             return
-        mime = {".js": "text/javascript", ".css": "text/css", ".html": "text/html"}.get(target.suffix)
+        mime = {".js": "text/javascript", ".css": "text/css", ".html": "text/html", ".ttf": "font/ttf"}.get(target.suffix)
         mime = mime or mimetypes.guess_type(target.name)[0] or "application/octet-stream"
         self.reply(200, target.read_bytes(), mime)
 

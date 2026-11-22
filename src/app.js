@@ -6,6 +6,7 @@
   const seed = await response.json();
   let serverRevision = seed.revision;
   const names = { lesson: '课程讲义', system: '体系与约定', tool: '常用工具', session: '训练牌例', story: '实战复盘', photo: '活动照片' };
+  const recorderPath = 'tools/bridge-table/';
   const accepts = { lesson: '.ppt,.pptx,.pdf', system: '.doc,.docx,.pdf,.md,.txt', tool: '.zip,.7z,.rar,.pdf', session: '.pbn', photo: '.jpg,.jpeg,.png,.webp' };
   const seatNames = { N: '北', E: '东', S: '南', W: '西' };
   const vulNames = { None: '双方无局', NS: '南北有局', EW: '东西有局', All: '双方有局' };
@@ -117,15 +118,21 @@
       return el('article', { class: 'resource-group' },
         el('div', { class: 'resource-heading' }, el('h3', {}, names[type])),
         el('div', { class: 'resource-items', role: 'region', 'aria-label': names[type] + '条目', tabindex: '0' },
-          ...items.map((item) => el('a', {
-          class: 'download-row', href: item.library ? '#conventions' : item.file?.data || item.file?.path || item.href,
-          download: item.file?.name, target: item.file || item.library ? undefined : '_blank',
-          rel: item.file || item.library ? undefined : 'noopener noreferrer',
-          'aria-label': (item.file ? '下载 ' : '打开 ') + item.title,
-        }, el('span', { class: 'resource-title' }, item.title,
-          item.description && !item.library ? el('small', { class: 'resource-description' }, item.description) : null),
-          el('span', { class: 'format-badge' }, item.file ? formats[suffix(item.file.name)] || suffix(item.file.name) : item.linkLabel || '网页'),
-          el('span', { class: 'download-arrow', 'aria-hidden': 'true' }, item.file ? '↓' : '↗'))),
+          ...items.map((item) => {
+            if (item.type === 'tool' && item.href === recorderPath) {
+              return el('a', { class: 'download-row', href: recorderPath, 'aria-label': '打开 ' + item.title },
+                el('span', { class: 'resource-title' }, item.title));
+            }
+            return el('a', {
+              class: 'download-row', href: item.library ? '#conventions' : item.file?.data || item.file?.path || item.href,
+              download: item.file?.name, target: item.file || item.library ? undefined : '_blank',
+              rel: item.file || item.library ? undefined : 'noopener noreferrer',
+              'aria-label': (item.file ? '下载 ' : '打开 ') + item.title,
+            }, el('span', { class: 'resource-title' }, item.title,
+              item.description && !item.library ? el('small', { class: 'resource-description' }, item.description) : null),
+              el('span', { class: 'format-badge' }, item.file ? formats[suffix(item.file.name)] || suffix(item.file.name) : item.linkLabel || '网页'),
+              el('span', { class: 'download-arrow', 'aria-hidden': 'true' }, item.file ? '↓' : '↗'));
+          }),
           !items.length ? empty('暂未发布') : null));
     }));
   }
@@ -706,9 +713,16 @@
         else delete item.auction;
         if (!item.sections.some(part=>part.body)) throw new Error('请至少填写一段复盘内容。');
       } else if (['lesson', 'system', 'tool'].includes(type) && controls.resourceMode.value === 'link') {
-        const url = new URL(controls.href.value.trim());
-        if (!['https:', 'http:'].includes(url.protocol)) throw new Error('请填写 http 或 https 网页地址。');
-        item.href = url.href;
+        const href = controls.href.value.trim();
+        if (type === 'tool' && href === recorderPath) {
+          item.href = href;
+        } else {
+          let url;
+          try { url = new URL(href); }
+          catch { throw new Error('请填写 http 或 https 网页地址。'); }
+          if (!['https:', 'http:'].includes(url.protocol)) throw new Error('请填写 http 或 https 网页地址。');
+          item.href = url.href;
+        }
         delete item.file;
         if (previous?.href && previous.href !== item.href) {
           delete item.library;
