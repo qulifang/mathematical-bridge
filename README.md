@@ -22,6 +22,7 @@
 | `media/lesson`、`media/system`、`media/tool` | 讲义、约定和工具附件 |
 | `media/session`、`media/photo` | 训练 PBN、展示照片和缩略图 |
 | `src/` | 页面、样式与浏览器交互 |
+| [`src/bridge-table/`](src/bridge-table/README.md) | 桥牌记牌器源码，发布至 `/tools/bridge-table/` |
 | `tools/` | 本机维护服务和静态构建 |
 | `.github/` | 审核人、PR 模板与 Pages 工作流 |
 | `docs/` | 维护、协作与交接说明 |

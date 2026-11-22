@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f6f0">
+  <meta name="description" content="记录叫牌、赛果和四手牌，导出 PBN。">
+  <meta name="bridge-recognition-url" content="">
+  <title>桥牌记牌器</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./bridge.js" defer></script>
+  <script src="./match.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="mast">
+    <div class="wrap brand"><span class="mark" aria-hidden="true">♠</span>
+      <div><strong>桥牌记牌器</strong><small>桥牌爱好者联盟</small></div>
+      <button type="button" class="archive" id="open-list">牌例簿 <span id="board-count"></span></button>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="match-entry">
+      <span id="match-current" hidden></span>
+      <button type="button" class="secondary" id="open-match">开闭室</button>
+    </div>
+    <section class="summary" aria-label="本副信息">
+      <div class="board-choice"><label for="board-number">牌号</label><select id="board-number"></select></div>
+      <div class="settings">
+        <label>发牌人<select id="dealer"><option value="N">北</option><option value="E">东</option><option value="S">南</option><option value="W">西</option></select></label>
+        <label>局况<select id="vul"><option value="None">双方无局</option><option value="NS">南北有局</option><option value="EW">东西有局</option><option value="All">双方有局</option></select></label>
+      </div>
+    </section>
+    <nav class="steps" aria-label="记录步骤">
+      <button type="button" data-stage="auction">叫牌</button>
+      <button type="button" data-stage="result">结果</button>
+      <button type="button" data-stage="photo">四手牌</button>
+    </nav>
+    <section id="auction" class="panel">
+      <div class="section-top"><h2>叫牌记录</h2><span id="turn" class="pill"></span></div>
+      <table aria-label="叫牌记录">
+        <thead><tr id="seat-headers"></tr></thead>
+        <tbody id="auction-lines"></tbody>
+      </table>
+      <div id="bid-entry">
+        <p class="caption">阶数</p>
+        <div id="levels" class="levels"></div>
+        <div id="bids" class="bid-grid" aria-label="花色和无将"></div>
+        <div class="special">
+          <button type="button" data-call="Pass" class="pass">Pass</button>
+          <button type="button" data-call="X" aria-label="X（加倍）">X</button>
+          <button type="button" data-call="XX" aria-label="XX（再加倍）">XX</button>
+          <button type="button" id="undo">撤销</button>
+        </div>
+      </div>
+      <div id="auction-finished" class="finished" hidden>
+        <button class="primary" type="button" data-stage="result">填写结果</button>
+        <button class="text-button" type="button" id="undo-done">撤销最后一叫</button>
+      </div>
+    </section>
+    <section id="result" class="panel" hidden>
+      <div class="section-top"><h2>定约结果</h2><span id="result-state" class="pill"></span></div>
+      <div id="result-controls"></div>
+      <section id="board-score" aria-labelledby="board-score-title" aria-live="polite" hidden>
+        <h3 id="board-score-title" class="caption">单副得分</h3>
+        <div class="score-pairs">
+          <div><span>南北</span><strong id="score-ns"></strong></div>
+          <div><span>东西</span><strong id="score-ew"></strong></div>
+        </div>
+      </section>
+      <button class="primary wide" type="button" data-stage="photo">四手牌</button>
+    </section>
+    <section id="photo" class="panel" hidden>
+      <div class="section-top"><h2>四手牌</h2><span id="photo-state" class="pill" hidden></span></div>
+      <div id="photo-intro" class="photo-intro">
+        <div>
+          <p class="muted">上北、右东、下南、左西，露出所有牌角</p>
+        </div>
+        <div class="compass" aria-label="上北、右东、下南、左西">
+          <b class="north">北</b><b class="east">东</b><b class="south">南</b><b class="west">西</b>
+          <span class="center" id="compass-strain" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="photo-actions">
+        <label for="camera" class="primary">拍照</label><input id="camera" type="file" accept="image/*" capture="environment">
+        <label for="album" class="secondary">相册</label><input id="album" type="file" accept="image/*">
+      </div>
+      <button type="button" id="manual-deal" class="secondary">手动录牌</button>
+      <div id="image-area" hidden>
+        <img id="image-preview" alt="本副四手牌照片">
+        <div id="photo-recognition" hidden>
+          <p class="muted">点识别后，照片会发给 BridgeLens</p>
+          <button type="button" id="detect" class="primary wide">识别四手牌</button>
+        </div>
+      </div>
+      <p id="recognition-message" class="muted" role="status"></p>
+      <div id="review" hidden>
+        <div class="section-top"><h3>核对牌面</h3><button type="button" class="text-button" id="rotate">顺时针换位</button></div>
+        <div id="hands"></div>
+        <p id="deal-message" role="status" class="muted"></p>
+        <p id="missing-cards" class="muted" hidden></p>
+        <button type="button" id="fill-hand" class="secondary wide" hidden></button>
+        <button type="button" id="confirm" class="primary wide">确认四手牌</button>
+      </div>
+      <details id="import">
+        <summary>粘贴 PBN 牌面</summary>
+        <p class="muted">也可用 <a href="https://bridgelens.johnfaben.com/" rel="noopener" target="_blank">BridgeLens</a> 识别后粘贴 Deal</p>
+        <textarea id="deal-input" rows="3" aria-label="PBN 牌面" placeholder='[Deal "N:... ... ... ..."]'></textarea>
+        <button type="button" id="import-deal" class="secondary">读取 Deal</button>
+      </details>
+    </section>
+    <div class="export-bar">
+      <p id="export-hint" hidden></p>
+      <button type="button" class="primary" id="export">导出本副 PBN</button>
+    </div>
+    <p id="notice" class="notice" role="status" hidden></p>
+  </main>
+  <dialog id="list-dialog">
+    <div class="section-top"><h2>牌例簿</h2><button type="button" class="text-button" id="close-list">关闭</button></div>
+    <section id="list-score" aria-labelledby="list-score-title" hidden>
+      <div class="section-top"><h3 id="list-score-title">总分</h3><span id="list-score-count" class="muted"></span></div>
+      <div class="score-pairs">
+        <div><span>南北</span><strong id="total-ns"></strong></div>
+        <div><span>东西</span><strong id="total-ew"></strong></div>
+      </div>
+    </section>
+    <div id="board-list"></div>
+    <div class="dialog-actions">
+      <button type="button" class="primary" id="new-board">新建牌例</button>
+      <button type="button" class="secondary" id="export-all">导出已完成的牌例</button>
+    </div>
+  </dialog>
+  <dialog id="delete-dialog" aria-labelledby="delete-title">
+    <div class="section-top"><h2 id="delete-title"></h2></div>
+    <p class="muted">同时删除本机的叫牌、结果和照片</p>
+    <div class="dialog-actions">
+      <button type="button" class="secondary" id="cancel-delete" autofocus>取消</button>
+      <button type="button" class="danger-button" id="confirm-delete">删除</button>
+    </div>
+  </dialog>
+  <dialog id="card-dialog">
+    <div class="section-top"><h2 id="card-title">选牌</h2><button type="button" class="text-button" id="close-card">取消</button></div>
+    <div id="card-picker"></div>
+    <button id="remove-card" type="button" class="secondary">移除</button>
+  </dialog>
+  <dialog id="match-dialog" aria-labelledby="match-title">
+    <div class="section-top">
+      <h2 id="match-title">开闭室</h2>
+      <button type="button" class="text-button" id="close-match">关闭</button>
+    </div>
+    <form id="match-form">
+      <div class="match-fields">
+        <label>比赛编号<input id="match-code" list="match-codes" maxlength="8" autocapitalize="characters" autocomplete="off" placeholder="8 位编号"></label>
+        <datalist id="match-codes"></datalist>
+        <label>本桌<select id="match-room"><option value="open">开室</option><option value="closed">闭室</option></select></label>
+      </div>
+      <div class="dialog-actions">
+        <button type="submit" class="primary">进入</button>
+        <button type="button" class="secondary" id="new-match">生成编号</button>
+        <button type="button" class="secondary" id="leave-match" hidden>回单桌</button>
+      </div>
+    </form>
+    <section id="match-active" hidden>
+      <div class="section-top match-active-heading">
+        <strong id="match-label"></strong>
+        <button type="button" class="text-button" id="copy-match">复制编号</button>
+      </div>
+      <p class="muted">两桌用同一编号，赛后交换成绩文本</p>
+      <label for="match-transfer">成绩文本</label>
+      <textarea id="match-transfer" rows="3" maxlength="100000" placeholder="粘贴另一桌的成绩"></textarea>
+      <div class="dialog-actions">
+        <button type="button" class="secondary" id="export-room">复制本桌成绩</button>
+        <button type="button" class="primary" id="import-room">导入另一桌</button>
+      </div>
+      <div class="match-comparison">
+        <h3>两室得分</h3>
+        <p class="muted">A 队坐开室南北、闭室东西</p>
+        <p id="match-progress" class="muted"></p>
+        <div class="score-pairs">
+          <div><span>A 队</span><strong id="match-team-a"></strong></div>
+          <div><span>B 队</span><strong id="match-team-b"></strong></div>
+        </div>
+        <div id="match-boards"></div>
+      </div>
+    </section>
+    <p id="match-status" class="muted" role="status"></p>
+  </dialog>
+</body>
+</html>

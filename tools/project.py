@@ -12,6 +12,10 @@ from urllib.parse import urlsplit
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+RECORDER_ROUTE = "tools/bridge-table/"
+RECORDER_SOURCE = ROOT / "src/bridge-table"
+RECORDER_ASSETS = ("index.html", "style.css", "bridge.js", "match.js", "app.js",
+                   "fonts/noto-serif-sc.ttf", "fonts/OFL.txt")
 TYPES = {
     "lesson": {".ppt", ".pptx", ".pdf"},
     "system": {".doc", ".docx", ".pdf", ".md", ".txt"},
@@ -23,6 +27,15 @@ TYPES = {
 
 def read_catalog():
     return json.loads((ROOT / "content/catalog.json").read_text(encoding="utf-8"))
+
+
+def recorder_html():
+    template = (RECORDER_SOURCE / "index.html").read_text(encoding="utf-8")
+    endpoint = os.environ.get("BRIDGE_RECOGNITION_URL", "").strip()
+    if endpoint and not re.fullmatch(r"https://[a-z0-9-]+\.fdmathbridge\.top/api/recognize", endpoint):
+        raise ValueError("BRIDGE_RECOGNITION_URL 需为学院子域名下的 HTTPS /api/recognize 地址")
+    return template.replace('name="bridge-recognition-url" content=""',
+                            f'name="bridge-recognition-url" content="{endpoint}"')
 
 
 def atomic_catalog(catalog):
@@ -181,9 +194,10 @@ def normalize_entries(entries, upload=False):
                 record["auction"] = auction
         elif item.get("href") and kind in {"lesson", "system", "tool"}:
             href = text_field(item, "href", 2000)
-            parsed = urlsplit(href)
-            if parsed.scheme not in {"https", "http"} or not parsed.netloc or parsed.username:
-                raise ValueError("网页链接需使用 http 或 https。")
+            if not (kind == "tool" and href == RECORDER_ROUTE):
+                parsed = urlsplit(href)
+                if parsed.scheme not in {"https", "http"} or not parsed.netloc or parsed.username:
+                    raise ValueError("网页链接需使用 http 或 https。")
             record["href"] = href
             record["linkLabel"] = text_field(item, "linkLabel", 30)
             record["library"] = bool(item.get("library"))
@@ -263,6 +277,13 @@ def build():
         (staging / "data/site.json").write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         for name, destination in files.items():
             (staging / destination).write_bytes((ROOT / "src" / name).read_bytes())
+        for name in RECORDER_ASSETS:
+            target = staging / RECORDER_ROUTE / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            if name == "index.html":
+                target.write_text(recorder_html(), encoding="utf-8")
+            else:
+                target.write_bytes((RECORDER_SOURCE / name).read_bytes())
         for item in data["entries"]:
             if "file" not in item:
                 continue
