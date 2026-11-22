@@ -29,6 +29,15 @@ def read_catalog():
     return json.loads((ROOT / "content/catalog.json").read_text(encoding="utf-8"))
 
 
+def recorder_html():
+    template = (RECORDER_SOURCE / "index.html").read_text(encoding="utf-8")
+    endpoint = os.environ.get("BRIDGE_RECOGNITION_URL", "").strip()
+    if endpoint and not re.fullmatch(r"https://[a-z0-9-]+\.fdmathbridge\.top/api/recognize", endpoint):
+        raise ValueError("BRIDGE_RECOGNITION_URL 需为学院子域名下的 HTTPS /api/recognize 地址")
+    return template.replace('name="bridge-recognition-url" content=""',
+                            f'name="bridge-recognition-url" content="{endpoint}"')
+
+
 def atomic_catalog(catalog):
     directory = ROOT / "content"
     with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=directory, delete=False) as stream:
@@ -271,7 +280,10 @@ def build():
         for name in RECORDER_ASSETS:
             target = staging / RECORDER_ROUTE / name
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes((RECORDER_SOURCE / name).read_bytes())
+            if name == "index.html":
+                target.write_text(recorder_html(), encoding="utf-8")
+            else:
+                target.write_bytes((RECORDER_SOURCE / name).read_bytes())
         for item in data["entries"]:
             if "file" not in item:
                 continue

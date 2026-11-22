@@ -26,6 +26,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python tools/project.py --output-dir dist
+        env:
+          BRIDGE_RECOGNITION_URL: ${{ vars.BRIDGE_RECOGNITION_URL }}
       - uses: actions/upload-pages-artifact@v4
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:

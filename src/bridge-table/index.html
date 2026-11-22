@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f7f6f0">
   <meta name="description" content="记录叫牌、赛果和四手牌，导出 PBN。">
+  <meta name="bridge-recognition-url" content="">
   <title>桥牌记牌器</title>
   <link rel="stylesheet" href="./style.css">
   <script src="./bridge.js" defer></script>
@@ -87,6 +88,10 @@
       <button type="button" id="manual-deal" class="secondary">手动录牌</button>
       <div id="image-area" hidden>
         <img id="image-preview" alt="本副四手牌照片">
+        <div id="photo-recognition" hidden>
+          <p class="muted">点识别后，照片会发给 BridgeLens</p>
+          <button type="button" id="detect" class="primary wide">识别四手牌</button>
+        </div>
       </div>
       <p id="recognition-message" class="muted" role="status"></p>
       <div id="review" hidden>

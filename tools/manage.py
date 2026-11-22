@@ -9,7 +9,7 @@ from urllib.parse import unquote, urlsplit
 import webbrowser
 
 from project import (RECORDER_ASSETS, RECORDER_ROUTE, RECORDER_SOURCE, ROOT,
-                     atomic_catalog, backup, build, normalize_entries, read_catalog, site_data)
+                     atomic_catalog, backup, build, normalize_entries, read_catalog, recorder_html, site_data)
 
 LOCK = threading.RLock()
 
@@ -52,6 +52,9 @@ class Handler(BaseHTTPRequestHandler):
             name = path.removeprefix("/" + RECORDER_ROUTE) or "index.html"
             if name not in RECORDER_ASSETS:
                 self.reply(404, {"error": "文件不存在。"})
+                return
+            if name == "index.html":
+                self.reply(200, recorder_html().encode("utf-8"), "text/html; charset=utf-8")
                 return
             target = RECORDER_SOURCE / name
         elif path.startswith("/media/"):

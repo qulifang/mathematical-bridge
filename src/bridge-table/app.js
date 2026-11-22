@@ -7,6 +7,7 @@
   const storageKey = 'bridge-table-boards-v1';
   const matchKey = 'bridge-table-matches-v1';
   const filePattern = /^(image\/(jpeg|png|webp))$/;
+  const recognitionUrl = document.querySelector('meta[name="bridge-recognition-url"]').content;
   const newBoard = number => ({
     number, ...B.boardDefaults(number), date: B.localDate(), calls: [], tricks: null,
     deal: B.emptyDeal(), confirmed: false, finding: '',
@@ -37,6 +38,8 @@
   let stage = 'auction';
   let level = 1;
   let photoURL = null;
+  let activePhoto = null;
+  let recognition = null;
   let photoRequest = 0;
   let manualEntry = false;
   let edit = null;
@@ -235,7 +238,8 @@
     const ready = show && B.validateDeal(current.deal);
     byId('review').hidden = !show;
     const status = byId('photo-state');
-    status.textContent = current.confirmed ? '已确认' : show ? '待确认' : photoURL ? '待录牌' : '';
+    status.textContent = current.confirmed ? '已确认' : show ? '待确认'
+      : activePhoto ? (recognitionUrl ? '待识别' : '待录牌') : '';
     status.hidden = !status.textContent;
     byId('confirm').disabled = !ready || current.confirmed;
     byId('confirm').textContent = current.confirmed ? '牌面已确认' : '确认四手牌';
@@ -418,12 +422,16 @@
   }
 
   function setPhoto(file) {
+    recognition?.abort();
     if (photoURL) URL.revokeObjectURL(photoURL);
+    activePhoto = file;
     photoURL = file ? URL.createObjectURL(file) : null;
     const image = byId('image-preview');
     if (photoURL) image.src = photoURL;
     else image.removeAttribute('src');
     byId('image-area').hidden = !file;
+    byId('detect').disabled = false;
+    byId('detect').textContent = '识别四手牌';
     byId('recognition-message').textContent = '';
     renderReview();
   }
@@ -483,6 +491,49 @@
     if (selectedVersions.get(key) !== version) return;
     try { await updatePhoto(key, normalized); }
     catch { if (version === photoRequest) say('照片未保存，离开页面后会丢失'); }
+  }
+
+  async function detectPhoto() {
+    if (!recognitionUrl || !activePhoto) return;
+    const current = board();
+    const version = photoRequest;
+    const controller = new AbortController();
+    recognition = controller;
+    const timeout = setTimeout(() => controller.abort(), 65000);
+    const control = byId('detect');
+    const message = byId('recognition-message');
+    message.textContent = '';
+    control.disabled = true;
+    control.textContent = '识别中…';
+    try {
+      const form = new FormData();
+      form.set('photo', activePhoto, 'bridge-photo');
+      const response = await fetch(recognitionUrl, { method: 'POST', body: form,
+        credentials: 'omit', signal: controller.signal });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || '识别失败，请稍后重试');
+      const deal = B.parseObservedDeal(result.pbn ?? '');
+      if (!deal) throw new Error('没识别出牌面');
+      if (version !== photoRequest) return;
+      current.deal = deal;
+      current.confirmed = false;
+      current.finding = Number.isInteger(result.detected) && result.detected < 52
+        ? '识别到 ' + result.detected + '/52 张，牌面可能含推补' : '';
+      save();
+      render();
+      byId('review').scrollIntoView({ block: 'nearest' });
+    } catch (error) {
+      if (version !== photoRequest) return;
+      message.textContent = error.name === 'AbortError' ? '识别超时，可重试'
+        : error instanceof TypeError ? '识别服务连不上，照片还在本机' : error.message;
+    } finally {
+      clearTimeout(timeout);
+      if (recognition === controller) {
+        recognition = null;
+        control.disabled = false;
+        control.textContent = '识别四手牌';
+      }
+    }
   }
 
   function download(boards) {
@@ -761,6 +812,8 @@
   };
   byId('camera').onchange = choosePhoto;
   byId('album').onchange = choosePhoto;
+  byId('photo-recognition').hidden = !recognitionUrl;
+  byId('detect').onclick = detectPhoto;
   byId('manual-deal').onclick = () => {
     manualEntry = true;
     renderReview();
@@ -778,6 +831,7 @@
     const deal = B.parseObservedDeal(byId('deal-input').value);
     if (!deal) { say('Deal 无法读取，请检查格式'); return; }
     ++photoRequest;
+    recognition?.abort();
 
     byId('recognition-message').textContent = '';
     board().deal = deal;
