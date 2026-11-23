@@ -571,7 +571,10 @@
     }
     if (item?.auction) controls.auction.value = item.auction.join(' ');
     controls.lead.value = item?.lead || '';
-    controls.contributor.value = item?.contributor || '';
+    controls.contributor.placeholder = '例如：本局由张三与李四共同复盘。';
+    controls.contributor.value = item?.contributor
+      ? '本局' + seatNames[item.contributorSeat || 'S'] + '家为' + item.contributor + '。'
+      : item?.attribution || '';
     controls.contributorSeat.value = item?.contributorSeat || 'S';
     controls.viewSeat.value = item?.viewSeat || '';
     controls.auctionTitle.value = item?.auctionTitle || '叫牌进程';
@@ -681,10 +684,10 @@
       if (type !== 'photo' && !item.title) throw new Error('请填写标题。');
       if (type === 'story') {
         Object.assign(item, { category: controls.category.value, session: controls.session.value,
-          board: controls.board.value, lead: controls.lead.value.trim(), contributor:controls.contributor.value.trim(),
+          board: controls.board.value, lead: controls.lead.value.trim(), contributor:'', attribution:controls.contributor.value.trim(),
           contributorSeat:controls.contributorSeat.value, viewSeat:controls.viewSeat.value,
           auctionTitle:controls.auctionTitle.value.trim() });
-        if (!item.contributor) throw new Error('请填写本局署名。');
+        if (!item.attribution) throw new Error('请填写本局署名。');
         item.sections = [...$('section-editors').children].map(card=>({title:card.querySelector('.section-title').value.trim(),body:card.querySelector('.section-body').value.trim()})).filter(part=>part.title || part.body);
         item.auctionNotes = {};
         for (const line of controls.auctionNotes.value.split('\n').filter(line=>line.trim())) {
