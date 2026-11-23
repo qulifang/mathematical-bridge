@@ -1,5 +1,5 @@
 {
-  "revision": 23,
+  "revision": 29,
   "entries": [
     {
       "title": "桥牌入门",
@@ -38,9 +38,9 @@
       }
     },
     {
-      "title": "自然体系约定卡",
+      "title": "自然体系比赛用约定卡",
       "date": "",
-      "description": "",
+      "description": "下载文件后在空缺栏目填写上自己的约定即可提交作为比赛用",
       "id": "card",
       "type": "system",
       "file": {
@@ -589,6 +589,7 @@
       "contributor": "屈竣堃",
       "contributorSeat": "W",
       "auctionTitle": "叫牌进程",
+      "viewSeat": "W",
       "sections": [
         {
           "title": "身在局中",
@@ -649,8 +650,7 @@
         "Pass",
         "Pass",
         "Pass"
-      ],
-      "viewSeat": "W"
+      ]
     },
     {
       "title": "上兵伐谋",
@@ -672,7 +672,7 @@
       "sections": [
         {
           "title": "身在局中",
-          "body": "持16点非均型牌，开叫1D；在对方争叫黑桃、同伴显示出方块配合后，凭借手中8个赢墩直接封局3NT，精准而犀利。"
+          "body": "持16点非均型牌，开叫1D；在对方争叫黑桃、同伴显示出方块配合且有应叫实力后，数出手中有8个赢墩，并且由于同伴至多在方块上只有2个点，因此旁花能拿到第9个赢墩的概率较大。虽然自己没有草花止张，但是可以期待对手无法首攻击穿草花，因此直接封局3NT，精准而犀利。"
         },
         {
           "title": "实战结果",
@@ -683,7 +683,9 @@
           "body": "双明手可见，如果首攻方块或者梅花，3NT定约将无法完成。但在同伴已显示出黑桃配合下，有什么会让你做出那样的决定呢？此外，东西实际上有着显而易见的4S定约，但在对方拍下3NT之后，你还有勇气往上叫吗？"
         }
       ],
-      "auctionNotes": {},
+      "auctionNotes": {
+        "3": "8-10点，4张以上方块"
+      },
       "auction": [
         "1D",
         "1S",
@@ -743,6 +745,30 @@
       "href": "https://bridge-table-notes-1122.formaldeck2.chatgpt.site/",
       "linkLabel": "",
       "library": false
+    },
+    {
+      "title": "新睿自然体系",
+      "date": "",
+      "description": "",
+      "id": "4d2057d6-d5e3-43d8-93df-68a0adc495dc",
+      "type": "system",
+      "file": {
+        "name": "新睿CCBA体系说明_v2.2.docx",
+        "path": "media/system/4d2057d6-d5e3-43d8-93df-68a0adc495dc-f0830fca5d16e994.docx",
+        "size": 207320
+      }
+    },
+    {
+      "title": "新睿精确体系",
+      "date": "",
+      "description": "",
+      "id": "062c0cf5-6de3-4cf3-9389-3a8f3e4b3188",
+      "type": "system",
+      "file": {
+        "name": "新睿精确体系说明.docx",
+        "path": "media/system/062c0cf5-6de3-4cf3-9389-3a8f3e4b3188-130cb74d34a16117.docx",
+        "size": 269614
+      }
     }
   ]
 }
